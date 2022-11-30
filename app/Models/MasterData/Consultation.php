@@ -8,21 +8,20 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Consultation extends Model
 {
+    // use HasFactory;
     use SoftDeletes;
 
-    // declare table
+    // declare table name
     public $table = 'consultation';
 
-    // this field must type date 
+    // this field must type date yyyy-mm-dd hh:mm:ss
     protected $dates = [
         'created_at',
         'updated_at',
         'deleted_at',
-
-
     ];
 
-    // declare fillable
+    // declare fillable fields
     protected $fillable = [
         'name',
         'created_at',

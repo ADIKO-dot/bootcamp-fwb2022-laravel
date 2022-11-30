@@ -15,7 +15,7 @@ class CreateConsultationTable extends Migration
     {
         Schema::create('consultation', function (Blueprint $table) {
             $table->id();
-            $table->string('namr')->unique();
+            $table->string('name')->unique();
             $table->timestamps();
             $table->softDeletes();
         });
