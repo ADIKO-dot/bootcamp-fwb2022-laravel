@@ -29,9 +29,10 @@ class StoreSpecialistRequest extends FormRequest
         return [
             'name' => [
                 'required', 'string', 'max:255', 'unique:specialist',
-            ], 
+            ],
             'price' => [
                 'required', 'string', 'max:255',
             ],
+        ];
     }
 }
