@@ -7,6 +7,7 @@ use App\Models\ManagementAccess\Role;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
 
+
 class StoreRoleRequest extends FormRequest
 {
     /**
@@ -28,7 +29,7 @@ class StoreRoleRequest extends FormRequest
     {
         return [
             'title' => [
-                'required', 'string', 'max:255',
+                'required', 'string', 'max:255', 'unique:role',
             ],
         ];
     }
