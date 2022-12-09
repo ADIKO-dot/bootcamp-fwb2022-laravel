@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Frontsite\LandingController;
+use App\Http\Controllers\Frontsite\AppointmentController;
+use App\Http\Controllers\Frontsite\PaymentController;
+use Faker\Provider\ar_EG\Payment;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,9 +18,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::resource('/', LandingController::class);
+
+Route::group(['prefix' => 'backsite', 'as' => 'backsite', 'middleware' => ['auth:sanctum', 'verified']], function () {
+
+    // appointment page
+    Route::resource('appointment', AppointmentController::class);
+
+    // paymnet page
+    Route::resource('payment', PaymentController::class);
 });
+
+
+
+Route::group(['prefix' => 'backsite', 'as' => 'backsite', 'middleware' => ['auth:sanctum', 'verified']], function () {
+
+    return view('dashboard');
+});
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::middleware([
     'auth:sanctum',
